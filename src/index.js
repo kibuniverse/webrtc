@@ -27,7 +27,6 @@ async function nativeMedia() {
     } else {
       pc2Video.src = window.URL.createObjectURL(e.stream)
     }
-    console.log(pc2Video)
     pc2Video.onloadedmetadata = function (e) {
       console.log('pc2 loadmetadata', e)
       pc2Video.play()
