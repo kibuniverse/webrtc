@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_createmedia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/createmedia */ \"./src/utils/createmedia.js\");\n\n// 打开本地摄像头\nasync function nativeMedia() {\n  let localStream = await (0,_utils_createmedia__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n  const video = document.querySelector('#play-video')\n  // 旧的浏览器可能没有srcObject\n  if (\"srcObject\" in video) {\n    video.srcObject = localStream;\n  } else {\n    video.src = window.URL.createObjectURL(localStream)\n  }\n  video.onloadedmetadata = function (e) {\n    video.play();\n  };\n}\n\n\nnativeMedia()\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _utils_createmedia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/createmedia */ \"./src/utils/createmedia.js\");\n/* harmony import */ var _utils_getpeerconnection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/getpeerconnection */ \"./src/utils/getpeerconnection.js\");\n\n\n\n// 打开本地摄像头\nasync function nativeMedia() {\n  let localStream = await (0,_utils_createmedia__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n  const video = document.querySelector('#play-video')\n  // 旧的浏览器可能没有srcObject\n  if (\"srcObject\" in video) {\n    video.srcObject = localStream;\n  } else {\n    video.src = window.URL.createObjectURL(localStream)\n  }\n  video.onloadedmetadata = function (e) {\n    video.play();\n  };\n}\n\nnativeMedia()\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ createMedia)\n/* harmony export */ });\nasync function createMedia() {\n  const streamTep = await navigator.mediaDevices.getUserMedia({ audio: true, video: true })\n  return streamTep\n}\n\n\n//# sourceURL=webpack:///./src/utils/createmedia.js?");
+
+/***/ }),
+
+/***/ "./src/utils/getpeerconnection.js":
+/*!****************************************!*\
+  !*** ./src/utils/getpeerconnection.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ getPeerConnection)\n/* harmony export */ });\nfunction getPeerConnection() {\n  return window.RTCPeerConnection\n    || window.mozRTCPeerConnection\n    || window.webkitRTCPeerConnection\n}\n\n//# sourceURL=webpack:///./src/utils/getpeerconnection.js?");
 
 /***/ })
 
